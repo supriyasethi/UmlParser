@@ -1,0 +1,53 @@
+Test1
+[A|-x:int;-y:int(*)]1-0..*[B],
+[A]-1[C],
+[A]-*[D]
+
+1.1.
+[A|-x:int;;-y:int(*);-b:null;-c:null;-d:null;],[B|-a:null;],[C|-a:null;],[D|-a:null;],[A]-0..*[B],[A]-1[C],[A]-0..*[D],[B]-1[A],[C]-1[A],[D]-1[A],
+
+Test2
+[<<interface>>;A1]^-.-[B1],
+[<<interface>>;A1]^-.-[B2],
+[P]^-[B1],
+[P]^-[B2],
+[<<interface>>;A2]^-.-[B2],
+[C2|+test(a2:A2)]uses -.->[<<interface>>;A2]
+[C1|+test(a1:A1)]
+[C1]uses -.->[<<interface>>;A1],
+
+Test3
+[ClassA|+message:String;-bark:String;+testMethod():void]
+[ClassA]^-[ClassB]
+[ClassB|+hello:String]
+
+Test4
+[<<interface>>;Subject|+attach(obj:Observer):void;+detach(obj:Observer):void;+notify():void]^-.-[ConcreteSubject],
+[<<interface>>;Observer|+update():void]^-.-[ConcreteObserver],
+[ConcreteSubject|-subjectState:String;+getState():String;+setState(status:String):void;+showState():void],
+[ConcreteObserver|+ConcreteObserver(theSubject:ConcreteSubject);+showState():void],
+[ConcreteSubject]^-[TheEconomy],
+[TheEconomy|+TheEconomy()],
+[Optimist|+Optimist(sub:ConcreteSubject)],
+[Pessimist|+Pessimist(sub:ConcreteSubject)],
+[ConcreteObserver]^-[Optimist],
+[ConcreteObserver]^-[Pessimist],
+[ConcreteSubject]uses -.->[<<interface>>;Observer|+update():void],
+[ConcreteSubject]-[<<interface>>;Observer|+update():void],
+[ConcreteSubject]-[ConcreteObserver],
+
+Test5
+[<<interface>>;Component|+operation():String]^-.-[ConcreteComponent],
+[<<interface>>;Component|+operation():String]^-.-[Decorator],
+[<<interface>>;Component|+operation():String]-[Decorator],
+[Decorator]uses -.->[<<interface>>;Component|+operation():String],
+[Tester]uses -.->[<<interface>>;Component|+operation():String],
+[ConcreteDecoratorA]uses -.->[<<interface>>;Component|+operation():String],
+[ConcreteDecoratorB]uses -.->[<<interface>>;Component|+operation():String],
+[Decorator]^-[ConcreteDecoratorA],
+[Decorator]^-[ConcreteDecoratorB],
+[ConcreteDecoratorA|-addedState:String;+ConcreteDecoratorA(c:Component)],
+[Tester|+main(args:String(*)):void],
+[Decorator|+Decorator(c:Component)],
+[ConcreteDecoratorB|-addedState:String;+ConcreteDecoratorB(c:Component)],
+[ConcreteComponent|+operation():String],

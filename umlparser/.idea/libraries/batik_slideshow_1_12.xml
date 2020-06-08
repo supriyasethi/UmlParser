@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="batik-slideshow-1.12">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../batik-bin-1.12/batik-1.12/batik-slideshow-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../batik-bin-1.12/batik-1.12/batik-svgpp-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../batik-bin-1.12/batik-1.12/batik-ttf2svg-1.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
